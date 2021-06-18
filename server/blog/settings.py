@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import environ
+
+env = environ.Env()
+# reading .env file
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,8 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-49qrb&mk*r_0avvs44$ni&_s^%(uwpse$(i12gsvxe@r)9h#q)'
+
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'djangosummernote',
+    'django_summernote',
     'blog_app'
 ]
 
@@ -82,10 +87,10 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blog',
-        'USER': 'postgres',
-        'PASSWORD': 'password123',
-        'HOST': 'localhost',
+        'NAME': env("DATABASE_NAME"),
+        'USER': env("DATABASE_USER"),
+        'PASSWORD': env("DATABASE_PASSWORD"),
+        'HOST': env("DATABASE_HOST"),
     }
 }
 
@@ -144,6 +149,8 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 SUMMERNOTE_THEME ='bs4'
 
