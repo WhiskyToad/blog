@@ -1,53 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 
+import { VStack, HStack, Grid, Text, Image } from "@chakra-ui/react";
+
 const BlogList = () => {
   const { isLoading, isError, data, error } = GetBlogs();
 
-  const blogDisplay = (blogs) => {
-    let list = [];
-    let result = [];
-
-    blogs.map((blogPost) => {
-      return list.push(
-        <div className="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div className="col p-4 d-flex flex-column position-static">
-            <strong className="d-inline-block mb-2 text-primary">
-              Category
-            </strong>
-            <h3 className="mb-0">{blogPost.title}</h3>
-            <div className="mb-1 text-muted">
-              {blogPost.month} {blogPost.day}
-            </div>
-            <p className="card-text mb-auto">{blogPost.excerpt}</p>
-            <Link to={`/blog/${blogPost.slug}`} className="stretched-link">
-              Continue reading
-            </Link>
-          </div>
-          <div className="col-auto d-none d-lg-block">
-            <img
-              width="200"
-              height="250"
-              src={blogPost.thumbnail}
-              alt="thumbnail"
-            />
-          </div>
-        </div>
-      );
-    });
-
-    for (let i = 0; i < list.length; i += 2) {
-      result.push(
-        <div key={i} className="row mb-2">
-          <div className="col-md-6">{list[i]}</div>
-          <div className="col-md-6">{list[i + 1] ? list[i + 1] : null}</div>
-        </div>
-      );
+  const BlogCard = ({ blog, index }) => {
+    const [display, setDisplay] = useState(false);
+    if (blog.featured) {
+      // do something with featured blog
     }
-
-    return result;
+    return (
+      <Link to={`/blog/${blog.slug}`}>
+        <HStack
+          position="relative"
+          overflow="hidden"
+          w="360px"
+          h="260px"
+          bg="black"
+          cursor="pointer"
+          key={index}
+          onMouseEnter={() => setDisplay(true)}
+          onMouseLeave={() => setDisplay(false)}
+        >
+          <Image
+            w="100%"
+            h="100%"
+            objectFit="cover"
+            src={blog.thumbnail}
+            position="absolute"
+            top="0"
+            left="0"
+            opacity={display ? "0.3" : "0.6"}
+          />
+          <VStack w="100%" textAlign="center" zIndex="99">
+            {display ? (
+              <>
+                <Text textStyle="excerpt">{blog.excerpt}</Text>
+              </>
+            ) : (
+              <h3>{blog.title}</h3>
+            )}
+          </VStack>
+        </HStack>
+      </Link>
+    );
   };
 
   if (isLoading) {
@@ -58,7 +58,23 @@ const BlogList = () => {
     return <span>Error: {error.message}</span>;
   }
 
-  return <div className="container mt-3">{blogDisplay(data)}</div>;
+  //      bg="linear-gradient(90deg,#4eafcf 15%,#ff5601 40%,#4eafcf 85%)"
+
+  return (
+    <Grid
+      templateColumns="repeat(3, 1fr)"
+      w="1150px"
+      p="20px"
+      gap={4}
+      my="50px"
+      mx="auto"
+      bg="#232023"
+    >
+      {data.map((blog, index) => (
+        <BlogCard blog={blog} index={index} />
+      ))}
+    </Grid>
+  );
 };
 
 function GetBlogs() {

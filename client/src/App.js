@@ -3,8 +3,11 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 
+import Navbar from "./components/Navbar";
 import BlogList from "./components/BlogList";
 import BlogDetail from "./components/BlogDetail";
+
+import theme from "./theme/theme";
 
 const queryClient = new QueryClient();
 
@@ -12,15 +15,16 @@ const App = () => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <Switch>
-            <ChakraProvider>
+        <ChakraProvider theme={theme}>
+          <Navbar />
+          <BrowserRouter>
+            <Switch>
               <Route exact path="/" component={() => <Redirect to="/blog" />} />
               <Route exact path="/blog" component={BlogList} />
               <Route exact path="/blog/:id" component={BlogDetail} />
-            </ChakraProvider>
-          </Switch>
-        </BrowserRouter>
+            </Switch>
+          </BrowserRouter>
+        </ChakraProvider>
       </QueryClientProvider>
     </>
   );
