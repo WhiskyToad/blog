@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
+import { motion } from "framer-motion";
 
 import { VStack, HStack, Grid, Text, Image } from "@chakra-ui/react";
 
+import Navbar from "./Navbar";
+import Banner from "./Banner";
+
 const BlogList = () => {
+  const MotionHStack = motion(HStack);
   const { isLoading, isError, data, error } = GetBlogs();
 
   const BlogCard = ({ blog, index }) => {
@@ -15,9 +20,10 @@ const BlogList = () => {
     }
     return (
       <Link to={`/blog/${blog.slug}`}>
-        <HStack
+        <MotionHStack
           position="relative"
           overflow="hidden"
+          borderRadius="5px"
           w="360px"
           h="260px"
           bg="black"
@@ -25,6 +31,7 @@ const BlogList = () => {
           key={index}
           onMouseEnter={() => setDisplay(true)}
           onMouseLeave={() => setDisplay(false)}
+          whileHover={{ scale: 1.15, zIndex: "9999" }}
         >
           <Image
             w="100%"
@@ -34,7 +41,7 @@ const BlogList = () => {
             position="absolute"
             top="0"
             left="0"
-            opacity={display ? "0.3" : "0.6"}
+            opacity={display ? "0.25" : "0.6"}
           />
           <VStack w="100%" textAlign="center" zIndex="99">
             {display ? (
@@ -45,7 +52,7 @@ const BlogList = () => {
               <h3>{blog.title}</h3>
             )}
           </VStack>
-        </HStack>
+        </MotionHStack>
       </Link>
     );
   };
@@ -61,19 +68,25 @@ const BlogList = () => {
   //      bg="linear-gradient(90deg,#4eafcf 15%,#ff5601 40%,#4eafcf 85%)"
 
   return (
-    <Grid
-      templateColumns="repeat(3, 1fr)"
-      w="1150px"
-      p="20px"
-      gap={4}
-      my="50px"
-      mx="auto"
-      bg="#232023"
-    >
-      {data.map((blog, index) => (
-        <BlogCard blog={blog} index={index} />
-      ))}
-    </Grid>
+    <>
+      <Banner />
+      <Navbar />
+      <Grid
+        templateColumns="repeat(3, 1fr)"
+        w="1150px"
+        p="20px"
+        gap={4}
+        my="50px"
+        mx="auto"
+        bg="white"
+        borderRadius="5px"
+        boxShadow="md"
+      >
+        {data.map((blog, index) => (
+          <BlogCard blog={blog} key={index} />
+        ))}
+      </Grid>
+    </>
   );
 };
 

@@ -1,21 +1,24 @@
 import React from "react";
 
-import { VStack } from "@chakra-ui/react";
-
-import banner from "../images/banner.jpg";
+import { HStack, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 
 const Navbar = () => {
   return (
-    <VStack
-      h="300px"
-      fontSize="90px"
-      backgroundImage={banner}
-      backgroundRepeat="no-repeat"
-      backgroundSize="cover"
-      justify="center"
+    <HStack
+      w="100%"
+      bg="white"
+      borderBottom="1px solid #232023"
+      borderTop="1px solid #232023"
     >
-      <h1>King of Tech</h1>
-    </VStack>
+      <UnorderedList mx="auto">
+        <ListItem>JavaScript</ListItem>
+
+        <ListItem>Python</ListItem>
+
+        <ListItem>UI/UX</ListItem>
+        <ListItem>Random</ListItem>
+      </UnorderedList>
+    </HStack>
   );
 };
 

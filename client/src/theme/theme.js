@@ -2,7 +2,7 @@ import { extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
   colors: {
-    grey: "#E6ECF8",
+    grey: "#232023",
     blue: "#1397c1",
     pink: "#fff0f5",
     selected: "#ebf6f7",
@@ -12,22 +12,33 @@ const theme = extendTheme({
       body: {
         fontFamily: "Roboto",
         lineHeight: "1.64",
-        bg: "black",
-        color: "white",
+        bg: "#f0f0f0",
+
         fontSize: { base: "14px", md: "16px" },
       },
       h1: {
         fontFamily: "Pacifico",
-        fontSize: "120px",
-        textShadow: "1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000",
+        fontSize: "100px",
+        color: "white",
       },
       h3: {
-        fontFamily: "Roboto Mono",
+        fontFamily: "Aldrich",
         fontSize: "30px",
+        color: "white",
       },
       a: {
         _hover: {
           textColor: "white",
+        },
+      },
+      li: {
+        listStyle: "none",
+        float: "left",
+        p: "10px",
+        fontFamily: "Aldrich",
+        cursor: "pointer",
+        _hover: {
+          bg: "#f0f0f0",
         },
       },
     },
@@ -36,9 +47,9 @@ const theme = extendTheme({
     excerpt: {
       fontSize: "20px",
     },
-    descriptiveSmall: {
-      fontSize: ["10px", "10px", "13px", "13px"],
-      color: "gray",
+    navbarTitle: {
+      fontSize: "30px",
+      fontFamily: "Pacifico",
     },
     heading: {
       fontFamily: ["BebasNeue"],
