@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "react-query";
-
 import BlogList from "./components/BlogList";
 import BlogDetail from "./components/BlogDetail";
 

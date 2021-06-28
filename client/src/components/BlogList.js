@@ -13,6 +13,7 @@ const BlogList = () => {
   const MotionHStack = motion(HStack);
   const { isLoading, isError, data, error } = GetBlogs();
 
+  // display for each blog
   const BlogCard = ({ blog, index }) => {
     const [display, setDisplay] = useState(false);
     if (blog.featured) {
@@ -46,7 +47,9 @@ const BlogList = () => {
           <VStack w="100%" textAlign="center" zIndex="99">
             {display ? (
               <>
-                <Text textStyle="excerpt">{blog.excerpt}</Text>
+                <Text textStyle="excerpt" m="10px">
+                  {blog.excerpt}
+                </Text>
               </>
             ) : (
               <h3>{blog.title}</h3>
@@ -91,7 +94,7 @@ const BlogList = () => {
 };
 
 function GetBlogs() {
-  return useQuery("posts", async () => {
+  return useQuery("blogs", async () => {
     const { data } = await axios.get(`http://localhost:8000/api/blog/`);
     return data;
   });

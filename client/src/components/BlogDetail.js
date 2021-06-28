@@ -2,7 +2,9 @@ import React from "react";
 import axios from "axios";
 import { useQuery } from "react-query";
 
-import { Box } from "@chakra-ui/react";
+import { Box, HStack, VStack, Image, Text } from "@chakra-ui/react";
+
+import DisplayBar from "./DisplayBar";
 
 const BlogDetail = (props) => {
   const slug = props.match.params.id;
@@ -21,14 +23,29 @@ const BlogDetail = (props) => {
   }
   return (
     <>
-      <h2>{data.title}</h2>
-      <Box dangerouslySetInnerHTML={createContent()} />
+      <HStack h="100vh" textAlign="center" bg="black" color="white">
+        <Image w="50vw" h="100%" objectFit="cover" src={data.thumbnail} />
+        <VStack>
+          <Text>{data.category}</Text>
+          <Text textStyle="heading">{data.title.toUpperCase()}</Text>
+          <Text>
+            {data.day} {data.month} {data.year}
+          </Text>
+        </VStack>
+      </HStack>
+
+      <DisplayBar data={data} />
+
+      <Box mx="auto" my="50px" p="40px" maxW="1000px" align="center">
+        <Text textStyle="heading">{data.title}</Text>
+        <Box mt="40px" dangerouslySetInnerHTML={createContent()} />
+      </Box>
     </>
   );
 };
 
 function GetBlog(slug) {
-  return useQuery("posts", async () => {
+  return useQuery("blog", async () => {
     const { data } = await axios.get(`http://localhost:8000/api/blog/${slug}`);
     return data;
   });

@@ -21,6 +21,10 @@ const theme = extendTheme({
         fontSize: "100px",
         color: "white",
       },
+      h2: {
+        fontFamily: "Aldrich",
+        fontSize: "40px",
+      },
       h3: {
         fontFamily: "Aldrich",
         fontSize: "30px",
@@ -50,16 +54,12 @@ const theme = extendTheme({
     navbarTitle: {
       fontSize: "30px",
       fontFamily: "Pacifico",
+      color: "white",
+      textShadow: "1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000",
     },
     heading: {
-      fontFamily: ["BebasNeue"],
-      fontSize: ["20px", "20px", "25px", "25px"],
-      color: "orange",
-      fontWeight: "bold",
-    },
-    headingSmall: {
-      fontFamily: ["BebasNeue"],
-      fontSize: ["16px", "16px", "20px", "20px"],
+      fontFamily: "Raleway",
+      fontSize: "40px",
     },
   },
 });
