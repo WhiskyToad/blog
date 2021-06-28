@@ -2,13 +2,22 @@ from django.db import models
 from datetime import datetime
 from django.template.defaultfilters import slugify
 
+class Categories(models.TextChoices):
+    JAVASCRIPT = 'JavaScript'
+    PYTHON = 'Python'
+    UI_UX = 'UI/UX'
+    RANDOM = 'Random'
+
+
 class BlogPost(models.Model):
-  title = models.CharField(max_length=50)
+  title = models.CharField(max_length=100)
   slug = models.SlugField()
+  category = models.CharField(max_length=50, choices=Categories.choices, default=Categories.RANDOM)
   thumbnail = models.ImageField(upload_to='photos/%Y/%m/%d/')
   excerpt = models.CharField(max_length=150)
-  month = models.CharField(max_length=3)
+  month = models.CharField(max_length=9)
   day = models.CharField(max_length=2)
+  year =models.CharField(max_length=4, default='2021')
   content = models.TextField()
   featured = models.BooleanField(default=False)
   date_created = models.DateTimeField(default=datetime.now, blank=True)

@@ -10,6 +10,21 @@ const BlogDetail = (props) => {
   const slug = props.match.params.id;
   const { isLoading, isError, data, error } = GetBlog(slug);
 
+  const categoryColor = (category) => {
+    switch (category) {
+      case "JavaScript":
+        return "#f86011";
+      case "Python":
+        return "#1e73be";
+      case "UI/UX":
+        return "#ff517f";
+      case "Random":
+        return "#f86011";
+      default:
+      // code block
+    }
+  };
+
   const createContent = () => {
     return { __html: data.content };
   };
@@ -25,9 +40,19 @@ const BlogDetail = (props) => {
     <>
       <HStack h="100vh" textAlign="center" bg="black" color="white">
         <Image w="50vw" h="100%" objectFit="cover" src={data.thumbnail} />
-        <VStack>
-          <Text>{data.category}</Text>
+        <VStack spacing={4}>
+          <Box
+            borderRadius="5px"
+            px="5px"
+            textStyle="excerpt"
+            bg={categoryColor(data.category)}
+          >
+            {data.category}
+          </Box>
           <Text textStyle="heading">{data.title.toUpperCase()}</Text>
+          <Text textStyle="excerpt" px="40px">
+            {data.excerpt}
+          </Text>
           <Text>
             {data.day} {data.month} {data.year}
           </Text>
