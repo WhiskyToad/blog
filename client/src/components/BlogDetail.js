@@ -5,25 +5,11 @@ import { useQuery } from "react-query";
 import { Box, HStack, VStack, Image, Text } from "@chakra-ui/react";
 
 import DisplayBar from "./DisplayBar";
+import { categoryColor } from "./categoryColor";
 
 const BlogDetail = (props) => {
   const slug = props.match.params.id;
   const { isLoading, isError, data, error } = GetBlog(slug);
-
-  const categoryColor = (category) => {
-    switch (category) {
-      case "JavaScript":
-        return "#f86011";
-      case "Python":
-        return "#1e73be";
-      case "UI/UX":
-        return "#ff517f";
-      case "Random":
-        return "#f86011";
-      default:
-      // code block
-    }
-  };
 
   const createContent = () => {
     return { __html: data.content };

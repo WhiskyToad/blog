@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import { motion } from "framer-motion";
 
-import { VStack, HStack, Grid, Text, Image } from "@chakra-ui/react";
+import { VStack, HStack, Grid, Text, Image, Box } from "@chakra-ui/react";
 
 import Navbar from "./Navbar";
 import Banner from "./Banner";
+import { categoryColor } from "./categoryColor";
 
 const BlogList = () => {
   const MotionHStack = motion(HStack);
@@ -44,7 +45,15 @@ const BlogList = () => {
             left="0"
             opacity={display ? "0.25" : "0.6"}
           />
-          <VStack w="100%" textAlign="center" zIndex="99">
+          <VStack w="100%" textAlign="center" zIndex="99" p="10px">
+            <Box
+              borderRadius="5px"
+              px="5px"
+              color="white"
+              bg={categoryColor(blog.category)}
+            >
+              {blog.category}
+            </Box>
             {display ? (
               <>
                 <Text textStyle="excerpt" m="10px">

@@ -10,9 +10,9 @@ class Categories(models.TextChoices):
 
 
 class BlogPost(models.Model):
-  title = models.CharField(max_length=100)
+  title = models.CharField(max_length=100, default='Title')
   slug = models.SlugField()
-  category = models.CharField(max_length=50, choices=Categories.choices, default=Categories.RANDOM)
+  category = models.CharField(max_length=55, choices=Categories.choices, default=Categories.RANDOM)
   thumbnail = models.ImageField(upload_to='photos/%Y/%m/%d/')
   excerpt = models.CharField(max_length=150)
   month = models.CharField(max_length=9)

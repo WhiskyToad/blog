@@ -52,7 +52,7 @@ const theme = extendTheme({
       fontSize: "20px",
     },
     navbarTitle: {
-      fontSize: "30px",
+      fontSize: "25px",
       fontFamily: "Pacifico",
       color: "white",
       textShadow: "1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000",

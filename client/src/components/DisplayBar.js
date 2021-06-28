@@ -22,7 +22,7 @@ const DisplayBar = ({ data }) => {
       justify="space-between"
     >
       <Box w="180px">
-        <Text textStyle="navbarTitle" p="5px">
+        <Text textStyle="navbarTitle" p="5px" ml="20px">
           King of Tech
         </Text>
       </Box>
