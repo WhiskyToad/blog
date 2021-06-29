@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 
 import { VStack, HStack, Grid, Text, Image, Box } from "@chakra-ui/react";
 
-import Navbar from "./Navbar";
+import Navbar from "./navbars/ListBar";
 import Banner from "./Banner";
-import { categoryColor } from "./categoryColor";
+import { categoryColor } from "../utils/categoryColor";
 
 const BlogList = () => {
   const MotionHStack = motion(HStack);

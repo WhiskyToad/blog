@@ -4,8 +4,8 @@ import { useQuery } from "react-query";
 
 import { Box, HStack, VStack, Image, Text } from "@chakra-ui/react";
 
-import DisplayBar from "./DisplayBar";
-import { categoryColor } from "./categoryColor";
+import DisplayBar from "./navbars/DisplayBar";
+import { categoryColor } from "../utils/categoryColor";
 
 const BlogDetail = (props) => {
   const slug = props.match.params.id;
