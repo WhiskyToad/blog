@@ -12,7 +12,7 @@ import { categoryColor } from "../utils/categoryColor";
 
 const BlogList = ({ data }) => {
   const MotionHStack = motion(HStack);
-  console.log(data);
+
   // display for each blog
   const BlogCard = ({ blog, index }) => {
     const [display, setDisplay] = useState(false);
@@ -67,8 +67,6 @@ const BlogList = ({ data }) => {
       </Link>
     );
   };
-
-  //      bg="linear-gradient(90deg,#4eafcf 15%,#ff5601 40%,#4eafcf 85%)"
 
   return (
     <>

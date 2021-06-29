@@ -1,10 +1,16 @@
 import React from "react";
 
-import { GetBlogs } from "../utils/queries";
+import { GetCategory } from "../utils/queries";
 import BlogList from "../components/BlogList";
 
-const AllBlogs = () => {
-  const { isLoading, isError, data, error } = GetBlogs();
+const Category = (props) => {
+  const category = props.match.params.id;
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const { isLoading, isError, data, error } = GetCategory(category, config);
 
   if (isLoading) {
     return <span>Loading...</span>;
@@ -20,4 +26,4 @@ const AllBlogs = () => {
   );
 };
 
-export default AllBlogs;
+export default Category;

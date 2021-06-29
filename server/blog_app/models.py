@@ -5,7 +5,7 @@ from django.template.defaultfilters import slugify
 class Categories(models.TextChoices):
     JAVASCRIPT = 'JavaScript'
     PYTHON = 'Python'
-    UI_UX = 'UI/UX'
+    DESIGN = 'Design'
     RANDOM = 'Random'
 
 

@@ -3,7 +3,7 @@ import React from "react";
 import { GetBlogs } from "../utils/queries";
 import BlogList from "../components/BlogList";
 
-const Category = () => {
+const AllBlogs = () => {
   const { isLoading, isError, data, error } = GetBlogs();
 
   if (isLoading) {
@@ -20,4 +20,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default AllBlogs;

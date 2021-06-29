@@ -11,16 +11,19 @@ const Navbar = () => {
       borderTop="1px solid #232023"
     >
       <UnorderedList mx="auto">
-        <Link to="/category/javascript">
+        <Link to="/blog/">
+          <ListItem>All Blogs</ListItem>
+        </Link>
+        <Link to="/blog/category/javascript">
           <ListItem>JavaScript</ListItem>
         </Link>
-        <Link to="/category/python">
+        <Link to="/blog/category/python">
           <ListItem>Python</ListItem>
         </Link>
-        <Link to="/category/uiux">
-          <ListItem>UI/UX</ListItem>
+        <Link to="/blog/category/design">
+          <ListItem>Design</ListItem>
         </Link>
-        <Link to="/category/random">
+        <Link to="/blog/category/random">
           <ListItem>Random</ListItem>
         </Link>
       </UnorderedList>

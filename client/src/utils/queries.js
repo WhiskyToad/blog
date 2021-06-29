@@ -16,3 +16,15 @@ export function GetBlog(slug) {
     return data;
   });
 }
+
+//category view
+export function GetCategory(category, config) {
+  return useQuery(`${category}`, async () => {
+    const { data } = await axios.post(
+      `http://localhost:8000/api/blog/category`,
+      { category },
+      config
+    );
+    return data;
+  });
+}

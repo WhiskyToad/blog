@@ -4,7 +4,7 @@ export const categoryColor = (category) => {
       return "#fcdc00";
     case "Python":
       return "#1e73be";
-    case "UI/UX":
+    case "Design":
       return "#ff517f";
     case "Random":
       return "#f86011";

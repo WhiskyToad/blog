@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 import AllBlogs from "./pages/AllBlogs";
 import View from "./pages/View";
+import Category from "./pages/Category";
 
 import theme from "./theme/theme";
 
@@ -20,6 +21,7 @@ const App = () => {
               <Route exact path="/" component={() => <Redirect to="/blog" />} />
               <Route exact path="/blog" component={AllBlogs} />
               <Route exact path="/blog/:id" component={View} />
+              <Route exact path="/blog/category/:id" component={Category} />
             </Switch>
           </BrowserRouter>
         </ChakraProvider>
