@@ -1,19 +1,18 @@
 import React, { useState } from "react";
-import axios from "axios";
+
 import { Link } from "react-router-dom";
-import { useQuery } from "react-query";
+
 import { motion } from "framer-motion";
 
 import { VStack, HStack, Grid, Text, Image, Box } from "@chakra-ui/react";
 
 import Navbar from "./navbars/ListBar";
-import Banner from "./Banner";
+import banner from "../images/banner.jpg";
 import { categoryColor } from "../utils/categoryColor";
 
-const BlogList = () => {
+const BlogList = ({ data }) => {
   const MotionHStack = motion(HStack);
-  const { isLoading, isError, data, error } = GetBlogs();
-
+  console.log(data);
   // display for each blog
   const BlogCard = ({ blog, index }) => {
     const [display, setDisplay] = useState(false);
@@ -69,14 +68,6 @@ const BlogList = () => {
     );
   };
 
-  if (isLoading) {
-    return <span>Loading...</span>;
-  }
-
-  if (isError) {
-    return <span>Error: {error.message}</span>;
-  }
-
   //      bg="linear-gradient(90deg,#4eafcf 15%,#ff5601 40%,#4eafcf 85%)"
 
   return (
@@ -102,11 +93,20 @@ const BlogList = () => {
   );
 };
 
-function GetBlogs() {
-  return useQuery("blogs", async () => {
-    const { data } = await axios.get(`http://localhost:8000/api/blog/`);
-    return data;
-  });
-}
+const Banner = () => {
+  return (
+    <VStack
+      h="160px"
+      fontSize="90px"
+      backgroundImage={banner}
+      backgroundRepeat="no-repeat"
+      backgroundSize="cover"
+      spacing={4}
+      textShadow="1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000"
+    >
+      <h1>King of Tech</h1>
+    </VStack>
+  );
+};
 
 export default BlogList;

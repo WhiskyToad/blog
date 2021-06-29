@@ -2,8 +2,9 @@ import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import BlogList from "./components/BlogList";
-import BlogDetail from "./components/BlogDetail";
+
+import AllBlogs from "./pages/AllBlogs";
+import View from "./pages/View";
 
 import theme from "./theme/theme";
 
@@ -17,8 +18,8 @@ const App = () => {
           <BrowserRouter>
             <Switch>
               <Route exact path="/" component={() => <Redirect to="/blog" />} />
-              <Route exact path="/blog" component={BlogList} />
-              <Route exact path="/blog/:id" component={BlogDetail} />
+              <Route exact path="/blog" component={AllBlogs} />
+              <Route exact path="/blog/:id" component={View} />
             </Switch>
           </BrowserRouter>
         </ChakraProvider>
