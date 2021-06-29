@@ -1,3 +1,4 @@
+// this returns the colors for the category display badge
 export const categoryColor = (category) => {
   switch (category) {
     case "JavaScript":

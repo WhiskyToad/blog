@@ -18,7 +18,7 @@ const theme = extendTheme({
       },
       h1: {
         fontFamily: "Pacifico",
-        fontSize: "100px",
+        fontSize: { base: "60px", md: "100px" },
         color: "white",
       },
       h2: {
@@ -37,7 +37,7 @@ const theme = extendTheme({
       },
       li: {
         listStyle: "none",
-        float: "left",
+        float: { base: "null", md: "left" },
         p: "10px",
         fontFamily: "Aldrich",
         cursor: "pointer",

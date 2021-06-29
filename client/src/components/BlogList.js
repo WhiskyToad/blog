@@ -25,7 +25,7 @@ const BlogList = ({ data }) => {
           position="relative"
           overflow="hidden"
           borderRadius="5px"
-          w="360px"
+          w="340px"
           h="260px"
           bg="black"
           cursor="pointer"
@@ -73,8 +73,12 @@ const BlogList = ({ data }) => {
       <Banner />
       <Navbar />
       <Grid
-        templateColumns="repeat(3, 1fr)"
-        w="1150px"
+        templateColumns={{
+          base: "repeat(1, 1fr)",
+          md: "repeat(2, 1fr)",
+          lg: "repeat(3, 1fr)",
+        }}
+        maxW="1100px"
         p="20px"
         gap={4}
         my="50px"
@@ -99,8 +103,8 @@ const Banner = () => {
       backgroundImage={banner}
       backgroundRepeat="no-repeat"
       backgroundSize="cover"
-      spacing={4}
       textShadow="1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000"
+      justify={{ base: "center", md: "flex-start" }}
     >
       <h1>King of Tech</h1>
     </VStack>
