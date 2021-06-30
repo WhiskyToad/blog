@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import AllBlogs from "./pages/AllBlogs";
 import View from "./pages/View";
 import Category from "./pages/Category";
+import Footer from "./components/Footer";
 
 import theme from "./theme/theme";
 
@@ -24,6 +25,7 @@ const App = () => {
               <Route exact path="/blog/category/:id" component={Category} />
             </Switch>
           </BrowserRouter>
+          <Footer />
         </ChakraProvider>
       </QueryClientProvider>
     </>
