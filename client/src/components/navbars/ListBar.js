@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Box, Flex, ListItem, UnorderedList } from "@chakra-ui/react";
 
-const Navbar = () => {
+const ListBar = () => {
   // toggle for mobile menu
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -89,4 +89,4 @@ const MenuLinks = ({ isOpen, toggle }) => {
   );
 };
 
-export default Navbar;
+export default ListBar;

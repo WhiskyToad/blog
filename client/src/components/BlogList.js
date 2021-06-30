@@ -6,8 +6,7 @@ import { motion } from "framer-motion";
 
 import { VStack, HStack, Grid, Text, Image, Box } from "@chakra-ui/react";
 
-import Navbar from "./navbars/ListBar";
-import banner from "../images/banner.jpg";
+import Listbar from "./navbars/ListBar";
 import { categoryColor } from "../utils/categoryColor";
 
 const BlogList = ({ data }) => {
@@ -78,8 +77,6 @@ const BlogList = ({ data }) => {
 
   return (
     <>
-      <Banner />
-      <Navbar />
       <Grid
         templateColumns={{
           base: "repeat(1, 1fr)",
@@ -100,22 +97,6 @@ const BlogList = ({ data }) => {
         ))}
       </Grid>
     </>
-  );
-};
-
-const Banner = () => {
-  return (
-    <VStack
-      h="160px"
-      fontSize="90px"
-      backgroundImage={banner}
-      backgroundRepeat="no-repeat"
-      backgroundSize="cover"
-      textShadow="1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000"
-      justify={{ base: "center", md: "flex-start" }}
-    >
-      <h1>King of Tech</h1>
-    </VStack>
   );
 };
 
