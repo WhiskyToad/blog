@@ -20,6 +20,7 @@ class BlogPost(models.Model):
   year =models.CharField(max_length=4, default='2021')
   content = models.TextField()
   featured = models.BooleanField(default=False)
+  hide = models.BooleanField(default=False)
   date_created = models.DateTimeField(default=datetime.now, blank=True)
 
   def save(self, *args, **kwargs):

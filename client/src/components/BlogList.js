@@ -19,6 +19,8 @@ const BlogList = ({ data }) => {
     if (blog.featured) {
       // do something with featured blog
     }
+    if (blog.hide) return null;
+
     return (
       <Link to={`/blog/${blog.slug}`}>
         <MotionHStack
