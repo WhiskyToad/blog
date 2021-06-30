@@ -44,7 +44,13 @@ const BlogList = ({ data }) => {
             left="0"
             opacity={display ? "0.25" : "0.6"}
           />
-          <VStack w="100%" textAlign="center" zIndex="99" p="10px">
+          <VStack
+            w="100%"
+            textAlign="center"
+            zIndex="99"
+            p="10px"
+            color="white"
+          >
             <Box
               borderRadius="5px"
               px="5px"

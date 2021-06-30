@@ -1,6 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-import { Box, HStack, VStack, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  HStack,
+  VStack,
+  Image,
+  Text,
+  Tooltip,
+} from "@chakra-ui/react";
+
+import { FaPinterest, FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 
 import DisplayBar from "./navbars/DisplayBar";
 import { categoryColor } from "../utils/categoryColor";
@@ -12,15 +24,22 @@ const BlogView = ({ data }) => {
 
   return (
     <>
-      <HStack h="100vh" textAlign="center" bg="black" color="white">
-        <Image w="50vw" h="100%" objectFit="cover" src={data.thumbnail} />
-        <VStack spacing={4}>
-          <Box
-            borderRadius="5px"
-            px="5px"
-            textStyle="excerpt"
-            bg={categoryColor(data.category)}
-          >
+      <Flex
+        flexDirection={{ base: "column", lg: "row" }}
+        align="center"
+        minH="100vh"
+        textAlign="center"
+        bg="black"
+        color="white"
+      >
+        <Image
+          w={{ base: "100vw", lg: "50vw" }}
+          h={{ base: "50vh", lg: "100vh" }}
+          objectFit="cover"
+          src={data.thumbnail}
+        />
+        <VStack spacing={4} py={{ base: "20px", lg: "0" }}>
+          <Box px="10px" textStyle="excerpt" bg={categoryColor(data.category)}>
             {data.category}
           </Box>
           <Text textStyle="heading">{data.title.toUpperCase()}</Text>
@@ -31,16 +50,72 @@ const BlogView = ({ data }) => {
             {data.day} {data.month} {data.year}
           </Text>
         </VStack>
-      </HStack>
+      </Flex>
 
-      <DisplayBar data={data} />
+      <DisplayBar />
 
-      <Box mx="auto" my="50px" p="40px" maxW="1000px" align="center">
+      <VStack
+        mx="auto"
+        my="50px"
+        p="10px"
+        maxW="1000px"
+        align="center"
+        textAlign="center"
+        spacing={4}
+      >
         <Text textStyle="heading">{data.title}</Text>
         <Box mt="40px" dangerouslySetInnerHTML={createContent()} />
-      </Box>
+        <ShareLinks data={data} />
+        <Link to="/blog/">
+          <Button bg="white" my="20px">
+            Back to Blogs
+          </Button>
+        </Link>
+      </VStack>
     </>
   );
 };
 
+const ShareLinks = ({ data }) => {
+  const facebookLink = `https://www.facebook.com/sharer.php?u=http%3A%2F%2Fking-of.tech/${data.slug}`;
+  const twitterLink = `https://twitter.com/intent/tweet
+  ?url=http%3A%2F%2Fking-of.tech%2F&text=${data.title
+    .split(" ")
+    .join("+")}&hashtags=css,html`;
+
+  return (
+    <VStack spacing={4}>
+      <h3>Liked it? Share it!</h3>
+      <HStack w="250px" justify="space-between" fontSize="35px">
+        <Tooltip hasArrow label="Share on Pinterest">
+          <span>
+            <FaPinterest color="#e60023" cursor="pointer" />
+          </span>
+        </Tooltip>
+
+        <Tooltip hasArrow label="Share on Facebook">
+          <span>
+            <a href={facebookLink}>
+              <FaFacebook color="#4495d4" cursor="pointer" />
+            </a>
+          </span>
+        </Tooltip>
+
+        <Tooltip hasArrow label="Share on Twitter">
+          <span>
+            <a href={twitterLink}>
+              <FaTwitter color="#1da1f2" cursor="pointer" />
+            </a>
+          </span>
+        </Tooltip>
+
+        <Tooltip hasArrow label="Share on Linkedin">
+          <span>
+            <FaLinkedin color="#0a66c2" cursor="pointer" />
+          </span>
+        </Tooltip>
+      </HStack>
+    </VStack>
+  );
+};
 export default BlogView;

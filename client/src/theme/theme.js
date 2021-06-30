@@ -28,7 +28,6 @@ const theme = extendTheme({
       h3: {
         fontFamily: "Aldrich",
         fontSize: "30px",
-        color: "white",
       },
       a: {
         _hover: {
@@ -49,7 +48,7 @@ const theme = extendTheme({
   },
   textStyles: {
     excerpt: {
-      fontSize: "20px",
+      fontSize: { base: "16px", md: "20px" },
     },
     navbarTitle: {
       fontSize: "25px",
@@ -59,7 +58,7 @@ const theme = extendTheme({
     },
     heading: {
       fontFamily: "Raleway",
-      fontSize: "40px",
+      fontSize: { base: "26px", md: "40px" },
     },
   },
 });
