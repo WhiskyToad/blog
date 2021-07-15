@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 
 import { VStack, HStack, Grid, Text, Image, Box } from "@chakra-ui/react";
 
-import Listbar from "./navbars/ListBar";
 import { categoryColor } from "../utils/categoryColor";
 
 const BlogList = ({ data }) => {
