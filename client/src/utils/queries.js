@@ -1,10 +1,14 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 
+const API = axios.create({
+  baseURL: "https://king-of-tech.herokuapp.com/api",
+});
+
 //All blogs
 export function GetBlogs() {
   return useQuery("blogs", async () => {
-    const { data } = await axios.get(`http://localhost:8000/api/blog/`);
+    const { data } = await API.get(`/blog/`);
     return data;
   });
 }
@@ -12,7 +16,7 @@ export function GetBlogs() {
 //One blog
 export function GetBlog(slug) {
   return useQuery(`${slug}`, async () => {
-    const { data } = await axios.get(`http://localhost:8000/api/blog/${slug}`);
+    const { data } = await API.get(`/blog/${slug}`);
     return data;
   });
 }
@@ -20,11 +24,7 @@ export function GetBlog(slug) {
 //category view
 export function GetCategory(category, config) {
   return useQuery(`${category}`, async () => {
-    const { data } = await axios.post(
-      `http://localhost:8000/api/blog/category`,
-      { category },
-      config
-    );
+    const { data } = await API.post(`/blog/category`, { category }, config);
     return data;
   });
 }

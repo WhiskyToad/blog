@@ -2,6 +2,8 @@ import React from "react";
 
 import { GetCategory } from "../utils/queries";
 import BlogList from "../components/BlogList";
+import Banner from "../components/Banner";
+import ListBar from "../components/navbars/ListBar";
 
 const Category = (props) => {
   const category = props.match.params.id;
@@ -13,14 +15,28 @@ const Category = (props) => {
   const { isLoading, isError, data, error } = GetCategory(category, config);
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return (
+      <>
+        <Banner />
+        <ListBar />
+        <span>Loading...</span>
+      </>
+    );
   }
 
   if (isError) {
-    return <span>Error: {error.message}</span>;
+    return (
+      <>
+        <Banner />
+        <ListBar />
+        <span>Error: {error.message}</span>
+      </>
+    );
   }
   return (
     <>
+      <Banner />
+      <ListBar />
       <BlogList data={data} />
     </>
   );

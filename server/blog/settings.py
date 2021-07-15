@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import environ
+import django_heroku
 
 env = environ.Env()
 # reading .env file
@@ -155,3 +156,5 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 SUMMERNOTE_THEME ='bs4'
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+django_heroku.settings(locals())

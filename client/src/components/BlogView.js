@@ -78,10 +78,19 @@ const BlogView = ({ data }) => {
 
 const ShareLinks = ({ data }) => {
   const facebookLink = `https://www.facebook.com/sharer.php?u=http%3A%2F%2Fking-of.tech/${data.slug}`;
+
   const twitterLink = `https://twitter.com/intent/tweet
-  ?url=http%3A%2F%2Fking-of.tech%2F&text=${data.title
+  ?url=http%3A%2F%2Fking-of.tech%2F&text=${data.slug
     .split(" ")
     .join("+")}&hashtags=css,html`;
+
+  const linkedinLink = `https://www.linkedin.com/shareArticle
+  ?mini=true
+  &url=https%3A%2F%2Fwww.king-of.tech%2F
+  &title=${data.slug}
+  &summary=&source=King-of-Tech`;
+
+  const pinterestLink = `https://pinterest.com/pin/create/button/?url=http://king-of.tech/blog/${data.slug}&media=&description=`;
 
   return (
     <VStack spacing={4}>
@@ -89,7 +98,9 @@ const ShareLinks = ({ data }) => {
       <HStack w="250px" justify="space-between" fontSize="35px">
         <Tooltip hasArrow label="Share on Pinterest">
           <span>
-            <FaPinterest color="#e60023" cursor="pointer" />
+            <a href={pinterestLink}>
+              <FaPinterest color="#e60023" cursor="pointer" />
+            </a>
           </span>
         </Tooltip>
 
@@ -111,7 +122,9 @@ const ShareLinks = ({ data }) => {
 
         <Tooltip hasArrow label="Share on Linkedin">
           <span>
-            <FaLinkedin color="#0a66c2" cursor="pointer" />
+            <a href={linkedinLink}>
+              <FaLinkedin color="#0a66c2" cursor="pointer" />
+            </a>
           </span>
         </Tooltip>
       </HStack>

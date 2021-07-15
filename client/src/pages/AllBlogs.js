@@ -12,7 +12,8 @@ const AllBlogs = () => {
     return (
       <>
         <Banner />
-        <ListBar /> <span>Loading...</span>
+        <ListBar />
+        <span>Loading...</span>
       </>
     );
   }
