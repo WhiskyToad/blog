@@ -1,3 +1,8 @@
 {
-  "python.pythonPath": "/home/toad/Desktop/blog/server/new-env/bin/python"
+  "python.pythonPath": "/home/toad/Desktop/blog/server/new-env/bin/python",
+  "cSpell.ignoreWords": [
+    "fblog",
+    "fking",
+    "fwww"
+  ]
 }
