@@ -2,7 +2,7 @@
 export const categoryColor = (category) => {
   switch (category) {
     case "JavaScript":
-      return "#fcdc00";
+      return "#cc9933";
     case "Python":
       return "#1e73be";
     case "Design":
