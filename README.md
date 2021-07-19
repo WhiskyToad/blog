@@ -63,11 +63,15 @@ For easy image hosting.
 
 ### <p align="center"> List page
 
-![Imgur](https://i.imgur.com/jlp4jC6.png?1)
+<p align="center">
+ <img src='https://i.imgur.com/jlp4jC6.png?1'>
+</p>
 
 ### <p align="center"> Display page
 
-![Imgur](https://i.imgur.com/PNrUsJK.png?1)
+<p align="center">
+ <img src='https://i.imgur.com/PNrUsJK.png?1'>
+</p>
 
 ### <p align="center">Summernote
 
