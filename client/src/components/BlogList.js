@@ -39,6 +39,7 @@ const BlogList = ({ data }) => {
             h="100%"
             objectFit="cover"
             src={blog.thumbnail}
+            alt={blog.title}
             position="absolute"
             top="0"
             left="0"

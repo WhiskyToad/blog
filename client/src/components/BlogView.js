@@ -38,8 +38,9 @@ const BlogView = ({ data }) => {
           h={{ base: "50vh", lg: "100vh" }}
           objectFit="cover"
           src={data.thumbnail}
+          alt={data.title}
         />
-        <VStack spacing={4} py={{ base: "20px", lg: "10px" }}>
+        <VStack w="100%" spacing={4} py={{ base: "20px", lg: "10px" }}>
           <Box px="10px" textStyle="excerpt" bg={categoryColor(data.category)}>
             {data.category}
           </Box>
@@ -94,6 +95,7 @@ const ShareLinks = ({ data }) => {
               <span>
                 <a
                   href={facebookLink}
+                  name="Share on Facebook"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -104,7 +106,12 @@ const ShareLinks = ({ data }) => {
 
             <Tooltip hasArrow label="Share on Twitter">
               <span>
-                <a href={twitterLink} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={twitterLink}
+                  name="Share on Twitter"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FaTwitter color="#1da1f2" cursor="pointer" />
                 </a>
               </span>
@@ -114,6 +121,7 @@ const ShareLinks = ({ data }) => {
               <span>
                 <a
                   href={linkedinLink}
+                  name="Share on Linkedin"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
