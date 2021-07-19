@@ -1,5 +1,11 @@
 # <p align="center">**King of Tech - Blog** </p>
 
+<div align="center"> 
+  <a href='https://www.king-of.tech/blog'>Live Version Here</a>
+  <br>
+  <br>
+</div>
+
 # <p align="center">Introduction </p>
 
 I wanted to grow my online presence and also learn some new things, so I created a blog. Hosted on Netlify and Heroku, both because they are simple to use from the CLI allowing me quick and easy deployment.
